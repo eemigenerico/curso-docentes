@@ -3,12 +3,14 @@
 export const courseData = [
     {
         id: 1,
-        title: "Fundamentos de la Innovación",
-        description: "Descubre las bases del pensamiento innovador en la educación.",
+        title: "Fundamentos de la Innovación", 
+        description: "Los cimientos de tu aula digital.",
         submodules: [
-            { id: 1, title: "Bienvenida al curso", type: "video" },
-            { id: 2, title: "¿Qué es ser un docente innovador?", type: "text" },
-            { id: 3, title: "Rompiendo paradigmas", type: "dynamic" }
+            { id: 1, title: "Los Cimientos de tu Aula", type: "text" },
+            { id: 2, title: "Construyendo tu Aula", type: "video" },
+            { id: 3, title: "Ecosistema de Google", type: "video" },
+            { id: 4, title: "Evaluación de Conocimientos", type: "quiz" },
+            { id: 5, title: "Siguientes Pasos", type: "text" }
         ]
     },
     {
