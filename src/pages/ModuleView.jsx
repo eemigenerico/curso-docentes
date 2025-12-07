@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { courseData } from '../data/courseData';
-import { PlayCircle, FileText, ArrowLeft, ArrowRight, CheckCircle, Menu, X } from 'lucide-react';
+import { PlayCircle, FileText, ArrowLeft, ArrowRight, CheckCircle, ChevronLeft, ChevronRight, Map, Menu } from 'lucide-react';
 
-// Importar componentes
+// Importar componentes del Módulo 1
 import S1_Cimientos from '../components/Module1/S1_Cimientos';
 import S2_ConstruyendoAula from '../components/Module1/S2_ConstruyendoAula';
 import S3_Ecosistema from '../components/Module1/S3_Ecosistema';
@@ -16,8 +16,17 @@ const ModuleView = () => {
     const moduleId = parseInt(id);
 
     const [activeSubmodule, setActiveSubmodule] = useState(0);
-    // Estado para controlar si el menú está abierto o cerrado
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+    // Resetear al cambiar de módulo
+    useEffect(() => {
+        setActiveSubmodule(0);
+    }, [moduleId]);
+
+    // Scroll al inicio al cambiar de tema
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, [activeSubmodule]);
 
     const currentModule = courseData.find(m => m.id === moduleId);
 
@@ -30,89 +39,185 @@ const ModuleView = () => {
 
     const renderContent = () => {
         const contentList = moduleContent[moduleId];
-        return (contentList && contentList[activeSubmodule]) ? contentList[activeSubmodule] : <div>Próximamente</div>;
+        if (contentList && contentList[activeSubmodule]) {
+            return contentList[activeSubmodule];
+        }
+        return <div style={{ padding: '3rem', textAlign: 'center', color: 'var(--text-muted)' }}>Contenido en construcción...</div>;
     };
 
-    const nextModuleId = moduleId < courseData.length ? moduleId + 1 : null;
-    const prevModuleId = moduleId > 1 ? moduleId - 1 : null;
+    const handleNext = () => {
+        if (activeSubmodule < currentModule.submodules.length - 1) {
+            setActiveSubmodule(prev => prev + 1);
+        } else if (moduleId < courseData.length) {
+            navigate(`/modulos/${moduleId + 1}`);
+        }
+    };
+
+    const handlePrev = () => {
+        if (activeSubmodule > 0) {
+            setActiveSubmodule(prev => prev - 1);
+        } else if (moduleId > 1) {
+            navigate(`/modulos/${moduleId - 1}`);
+        }
+    };
+
+    const isLastSubmodule = activeSubmodule === currentModule.submodules.length - 1;
+    const isFirstSubmodule = activeSubmodule === 0;
 
     return (
-        <div style={{ maxWidth: '1400px', margin: '0 auto', paddingBottom: '4rem' }}>
+        <div style={{ maxWidth: '1400px', margin: '0 auto', paddingBottom: '4rem', paddingTop: '2rem' }}>
 
-            {/* Header de Navegación */}
-            <div style={{ padding: '2rem 0', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <Link to="/modulos" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', color: 'var(--text-muted)', textDecoration: 'none' }}>
-                    <ArrowLeft size={20} /> Volver al Mapa
-                </Link>
+            {/* Contenedor Flex Principal */}
+            <div style={{
+                display: 'flex',
+                gap: isSidebarOpen ? '5rem' : '2rem', // CORRECCIÓN: Mucho más espacio cuando está abierto
+                alignItems: 'flex-start',
+                transition: 'gap 0.3s ease'
+            }}>
 
-                {/* Botón para móviles o para colapsar en escritorio */}
-                <button
-                    onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                    className="glass"
-                    style={{ padding: '8px 16px', borderRadius: '8px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-main)' }}
-                >
-                    {isSidebarOpen ? <X size={18} /> : <Menu size={18} />}
-                    {isSidebarOpen ? 'Ocultar Menú' : 'Ver Temario'}
-                </button>
-            </div>
-
-            <div style={{ display: 'flex', gap: '2rem', alignItems: 'flex-start', position: 'relative' }}>
-
-                {/* SIDEBAR COLAPSABLE */}
-                <aside
-                    className="glass"
+                {/* --- SIDEBAR (Sticky Wrapper) --- */}
+                <div
                     style={{
-                        width: isSidebarOpen ? '280px' : '0px', // Se contrae a 0
-                        overflow: 'hidden', // Oculta el contenido al cerrarse
-                        padding: isSidebarOpen ? '1.5rem' : '0',
-                        borderRadius: '16px',
-                        position: 'sticky',
-                        top: '100px',
-                        transition: 'all 0.3s ease-in-out', // Animación suave
-                        opacity: isSidebarOpen ? 1 : 0,
-                        whiteSpace: 'nowrap' // Evita que el texto se rompa feo al cerrar
+                        width: isSidebarOpen ? '300px' : '60px', // Ancho dinámico
+                        flexShrink: 0,
+                        position: 'sticky', // CORRECCIÓN: Sticky aplicado aquí
+                        top: '100px',       // Distancia del techo
+                        height: 'fit-content',
+                        maxHeight: 'calc(100vh - 120px)',
+                        transition: 'width 0.3s ease',
+                        zIndex: 20
                     }}
                 >
-                    <div style={{ marginBottom: '1.5rem', borderBottom: '1px solid var(--glass-border)', paddingBottom: '1rem' }}>
-                        <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>MÓDULO {currentModule.id}</span>
-                        <h2 style={{ fontSize: '1.1rem', margin: '0.5rem 0 0 0', lineHeight: 1.3 }}>{currentModule.title}</h2>
-                    </div>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                        {currentModule.submodules.map((sub, index) => (
-                            <button
-                                key={sub.id}
-                                onClick={() => setActiveSubmodule(index)}
-                                style={{
-                                    background: activeSubmodule === index ? 'var(--primary-gradient)' : 'transparent',
-                                    border: 'none', padding: '12px', borderRadius: '8px', cursor: 'pointer',
-                                    color: activeSubmodule === index ? 'white' : 'var(--text-muted)',
-                                    display: 'flex', alignItems: 'center', gap: '10px', textAlign: 'left', width: '100%', fontSize: '0.9rem'
-                                }}
-                            >
-                                {index === 3 ? <CheckCircle size={16} /> : (sub.type === 'video' ? <PlayCircle size={16} /> : <FileText size={16} />)}
-                                <span style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>{sub.title}</span>
-                            </button>
-                        ))}
-                    </div>
-                </aside>
+                    {/* Contenedor Visual del Sidebar */}
+                    <aside
+                        className="glass"
+                        style={{
+                            borderRadius: '16px',
+                            padding: isSidebarOpen ? '1.5rem' : '1rem',
+                            overflow: 'hidden',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '1rem',
+                            background: 'var(--bg-card)',
+                            transition: 'all 0.3s ease'
+                        }}
+                    >
+                        {/* Cabecera del Sidebar con Botón */}
+                        <div style={{
+                            display: 'flex',
+                            justifyContent: isSidebarOpen ? 'space-between' : 'center',
+                            alignItems: 'center',
+                            marginBottom: isSidebarOpen ? '1rem' : '0',
+                            borderBottom: isSidebarOpen ? '1px solid var(--glass-border)' : 'none',
+                            paddingBottom: isSidebarOpen ? '1rem' : '0',
+                            minHeight: '40px'
+                        }}>
+                            {/* Título (Solo visible si abierto) */}
+                            {isSidebarOpen && (
+                                <span style={{ fontSize: '0.9rem', fontWeight: 'bold', color: 'var(--text-muted)' }}>
+                                    TEMARIO
+                                </span>
+                            )}
 
-                {/* CONTENIDO (Se expande si el sidebar se cierra) */}
+                            {/* BOTÓN COLAPSAR (Limpio y grande) */}
+                            <button
+                                onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+                                style={{
+                                    background: 'rgba(255,255,255,0.1)',
+                                    border: '1px solid var(--glass-border)',
+                                    color: 'var(--text-main)',
+                                    width: '40px',
+                                    height: '40px',
+                                    borderRadius: '50%',
+                                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                    cursor: 'pointer',
+                                    transition: 'background 0.2s'
+                                }}
+                                title={isSidebarOpen ? "Ocultar menú" : "Ver menú"}
+                            >
+                                {isSidebarOpen ? <ChevronLeft size={24} /> : <Menu size={24} />}
+                            </button>
+                        </div>
+
+                        {/* Contenido del Menú (Se oculta si está cerrado) */}
+                        {isSidebarOpen && (
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', animation: 'fadeIn 0.3s' }}>
+
+                                <Link to="/modulos" style={{
+                                    display: 'flex', alignItems: 'center', gap: '10px',
+                                    padding: '12px', borderRadius: '8px',
+                                    background: 'rgba(255,255,255,0.05)',
+                                    color: 'var(--text-muted)', textDecoration: 'none', fontWeight: 500
+                                }}>
+                                    <Map size={18} /> Volver al Mapa
+                                </Link>
+
+                                <div>
+                                    <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', display: 'block', marginBottom: '5px' }}>
+                                        MÓDULO {currentModule.id}
+                                    </span>
+                                    <h2 style={{ fontSize: '1.1rem', margin: 0, lineHeight: 1.3 }}>
+                                        {currentModule.title}
+                                    </h2>
+                                </div>
+
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                                    {currentModule.submodules.map((sub, index) => (
+                                        <button
+                                            key={sub.id}
+                                            onClick={() => setActiveSubmodule(index)}
+                                            style={{
+                                                background: activeSubmodule === index ? 'var(--primary-gradient)' : 'transparent',
+                                                border: 'none', padding: '12px', borderRadius: '8px', cursor: 'pointer',
+                                                color: activeSubmodule === index ? 'white' : 'var(--text-muted)',
+                                                display: 'flex', alignItems: 'center', gap: '10px', textAlign: 'left', width: '100%', fontSize: '0.95rem',
+                                                transition: 'all 0.2s',
+                                                boxShadow: activeSubmodule === index ? '0 4px 12px rgba(0,0,0,0.2)' : 'none'
+                                            }}
+                                        >
+                                            {index === 3 ? <CheckCircle size={18} /> : (sub.type === 'video' ? <PlayCircle size={18} /> : <FileText size={18} />)}
+                                            <span style={{ fontWeight: activeSubmodule === index ? 600 : 400 }}>{sub.title}</span>
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+                    </aside>
+                </div>
+
+                {/* --- ÁREA DE CONTENIDO --- */}
                 <section style={{ flex: 1, minWidth: 0 }}>
-                    <div className="glass" style={{ padding: '3rem', borderRadius: '16px', minHeight: '600px', fontSize: '1.1rem' /* Letra un poco más grande */ }}>
+                    <div className="glass" style={{ padding: '3rem', borderRadius: '16px', minHeight: '600px', fontSize: '1.1rem', lineHeight: '1.8' }}>
                         {renderContent()}
                     </div>
 
-                    <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '2rem' }}>
-                        {prevModuleId ? (
-                            <button onClick={() => { navigate(`/modulos/${prevModuleId}`); setActiveSubmodule(0); }} className="glass" style={{ padding: '12px 24px', borderRadius: '8px', color: 'var(--text-main)', cursor: 'pointer' }}>
-                                ← Anterior
-                            </button>
-                        ) : <div />}
-                        {nextModuleId ? (
-                            <button onClick={() => { navigate(`/modulos/${nextModuleId}`); setActiveSubmodule(0); }} className="btn-primary" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                Siguiente →
-                            </button>
-                        ) : <div />}
+                    {/* Navegación Inferior */}
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '3rem' }}>
+                        <button
+                            onClick={handlePrev}
+                            disabled={isFirstSubmodule && moduleId === 1}
+                            className="glass"
+                            style={{
+                                padding: '14px 28px', borderRadius: '8px',
+                                color: (isFirstSubmodule && moduleId === 1) ? 'var(--text-muted)' : 'var(--text-main)',
+                                cursor: (isFirstSubmodule && moduleId === 1) ? 'default' : 'pointer',
+                                display: 'flex', alignItems: 'center', gap: '10px', opacity: (isFirstSubmodule && moduleId === 1) ? 0.5 : 1
+                            }}
+                        >
+                            <ArrowLeft size={20} /> {isFirstSubmodule ? "Módulo Anterior" : "Tema Anterior"}
+                        </button>
+
+                        <button
+                            onClick={handleNext}
+                            disabled={isLastSubmodule && moduleId === courseData.length}
+                            className={isLastSubmodule ? "glass" : "btn-primary"}
+                            style={{
+                                display: 'flex', alignItems: 'center', gap: '10px', padding: '14px 28px', borderRadius: '8px', cursor: 'pointer',
+                                border: isLastSubmodule ? '1px solid #a855f7' : 'none', color: isLastSubmodule ? '#a855f7' : 'white', background: isLastSubmodule ? 'transparent' : 'var(--primary-gradient)'
+                            }}
+                        >
+                            {isLastSubmodule ? "Siguiente Módulo" : "Siguiente Tema"} <ArrowRight size={20} />
+                        </button>
                     </div>
                 </section>
 

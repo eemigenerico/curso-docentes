@@ -1,73 +1,94 @@
 import React from 'react';
-import { Play, FileText, Copy, Eye } from 'lucide-react';
+import { Play, Eye, Edit3, Copy, CheckSquare } from 'lucide-react';
 
 const S3_Ecosistema = () => {
     return (
         <div style={{ animation: 'fadeIn 0.5s ease-in' }}>
             <h2 style={{ fontSize: '2rem', marginBottom: '1.5rem', color: '#c084fc' }}>
-                El Ecosistema Google
+                Submódulo 3 – Integración del Ecosistema de Google
             </h2>
 
             <p style={{ marginBottom: '2rem', fontSize: '1.1rem' }}>
-                Classroom es el director de orquesta. Veremos cómo conectar <strong>Drive, Docs y Forms</strong> para automatizar tu trabajo.
+                Google Classroom no trabaja solo. Su verdadero poder reside en que funciona como el director de orquesta de todo el ecosistema de Google.
+                En esta lección, descubriremos cómo conectar <strong>Drive, Docs y Forms</strong> para automatizar tareas que antes te tomaban horas: desde organizar archivos hasta calificar exámenes.
+                Prepárate para descubrir tu nueva "fotocopiadora digital".
             </p>
 
-            {/* VIDEO */}
-            <div style={{ width: '100%', aspectRatio: '16/9', backgroundColor: '#000', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '3rem' }}>
+            {/* VÍDEO */}
+            <div style={{ width: '100%', aspectRatio: '16/9', backgroundColor: '#000', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '3rem', border: '1px solid var(--glass-border)' }}>
                 <div style={{ textAlign: 'center', color: 'white' }}>
                     <Play size={64} fill="white" style={{ opacity: 0.8 }} />
-                    <p style={{ marginTop: '1rem' }}>Vídeo: La Fotocopiadora Digital</p>
                 </div>
             </div>
 
-            <h3 style={{ marginBottom: '1.5rem' }}>Automatización en Drive</h3>
-            <p style={{ marginBottom: '1rem', color: 'var(--text-muted)' }}>
-                Olvídate de organizar carpetas. Classroom crea automáticamente:
-            </p>
-            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginBottom: '3rem' }}>
-                <div className="glass" style={{ flex: 1, padding: '1rem', textAlign: 'center', borderRadius: '8px' }}>📂 Carpeta Classroom</div>
-                <div className="glass" style={{ flex: 1, padding: '1rem', textAlign: 'center', borderRadius: '8px' }}>➡️ Carpeta de Clase</div>
-                <div className="glass" style={{ flex: 1, padding: '1rem', textAlign: 'center', borderRadius: '8px' }}>➡️ Carpeta de Tarea</div>
+            <h3 style={{ marginBottom: '1rem' }}>Google Drive: Tu Archivero Inteligente y Automático</h3>
+            <p style={{ marginBottom: '1rem' }}>¿Recuerdas el caos de recibir tareas por correo y tener que descargarlas y organizarlas en carpetas manualmente? Eso se acabó.</p>
+            <div style={{ background: 'rgba(59, 130, 246, 0.1)', padding: '1.5rem', borderRadius: '12px', marginBottom: '3rem', borderLeft: '4px solid #3b82f6' }}>
+                <p style={{ marginBottom: '1rem' }}>Al usar Classroom, sucede algo invisible pero fantástico en tu <strong>Google Drive</strong>:</p>
+                <ul style={{ listStyle: 'none', padding: 0 }}>
+                    <li style={{ padding: '8px 0' }}>✅ Se crea automáticamente una carpeta principal llamada "Classroom".</li>
+                    <li style={{ padding: '8px 0' }}>✅ Dentro, se genera una subcarpeta para cada clase que impartes.</li>
+                    <li style={{ padding: '8px 0' }}>✅ Y lo mejor: cada vez que dejas una tarea, se crea una carpeta específica para ella.</li>
+                </ul>
+                <p style={{ marginTop: '1rem', fontStyle: 'italic' }}>Todos los trabajos que tus alumnos suben se guardan automáticamente en la carpeta correcta, ordenados y seguros, sin que tú tengas que mover un solo dedo.</p>
             </div>
 
-            {/* SECCIÓN CRÍTICA: PERMISOS */}
-            <h3 style={{ marginBottom: '1.5rem' }}>Docs: Los 3 Superpoderes</h3>
-            <p style={{ marginBottom: '1rem' }}>Al adjuntar un archivo, eliges cómo interactúan los alumnos:</p>
+            <h3 style={{ marginBottom: '1.5rem' }}>Docs y Slides: Dominando la “Fotocopiadora Digital”</h3>
+            <p style={{ marginBottom: '2rem' }}>Al adjuntar un archivo de Google (Documento, Presentación u Hoja de Cálculo) a una tarea, tienes tres superpoderes (permisos) a tu disposición. Elegir el correcto es clave para el éxito de la actividad:</p>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            {/* 3 TARJETAS IDÉNTICAS EN ESTILO */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', marginBottom: '4rem' }}>
 
-                {/* Opción 1 */}
-                <div className="glass" style={{ padding: '1.5rem', borderRadius: '12px', display: 'flex', gap: '1rem', alignItems: 'center' }}>
-                    <div style={{ background: 'rgba(255,255,255,0.1)', padding: '10px', borderRadius: '50%' }}><Eye size={20} /></div>
+                {/* Tarjeta 1 */}
+                <div className="glass" style={{ padding: '2rem', borderRadius: '16px', borderTop: '4px solid #60a5fa', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                    <div style={{ background: 'rgba(96, 165, 250, 0.2)', width: '50px', height: '50px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <Eye color="#60a5fa" size={24} />
+                    </div>
                     <div>
-                        <strong>Los alumnos pueden ver:</strong>
-                        <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', margin: 0 }}>Solo lectura. Ideal para instrucciones o material de estudio.</p>
+                        <h4 style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>👁️ Los alumnos pueden ver el archivo</h4>
+                        <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem' }}>Ideal para lecturas, instrucciones o material de consulta. Nadie puede modificarlo, solo leerlo.</p>
                     </div>
                 </div>
 
-                {/* Opción 2 - Cuidado */}
-                <div className="glass" style={{ padding: '1.5rem', borderRadius: '12px', display: 'flex', gap: '1rem', alignItems: 'center', borderLeft: '4px solid #f87171' }}>
-                    <div style={{ background: 'rgba(248, 113, 113, 0.2)', padding: '10px', borderRadius: '50%' }}><FileText size={20} color="#f87171" /></div>
+                {/* Tarjeta 2 */}
+                <div className="glass" style={{ padding: '2rem', borderRadius: '16px', borderTop: '4px solid #fbbf24', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                    <div style={{ background: 'rgba(251, 191, 36, 0.2)', width: '50px', height: '50px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <Edit3 color="#fbbf24" size={24} />
+                    </div>
                     <div>
-                        <strong>Los alumnos pueden editar (¡Cuidado!):</strong>
-                        <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', margin: 0 }}>Todos escriben en el <strong>mismo</strong> archivo. Caótico para tareas, bueno para lluvias de ideas.</p>
+                        <h4 style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>✍️ Los alumnos pueden editar el archivo</h4>
+                        <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem' }}><strong>¡Cuidado aquí!</strong> Todos los alumnos editan el <em>mismo</em> documento al mismo tiempo. Es perfecto para lluvias de ideas colaborativas, pero caótico para trabajos individuales.</p>
                     </div>
                 </div>
 
-                {/* Opción 3 - Recomendada */}
-                <div className="glass" style={{ padding: '1.5rem', borderRadius: '12px', display: 'flex', gap: '1rem', alignItems: 'center', border: '2px solid #a855f7', background: 'rgba(168, 85, 247, 0.05)' }}>
-                    <div style={{ background: '#a855f7', padding: '10px', borderRadius: '50%' }}><Copy size={20} color="white" /></div>
+                {/* Tarjeta 3 */}
+                <div className="glass" style={{ padding: '2rem', borderRadius: '16px', borderTop: '4px solid #a855f7', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                    <div style={{ background: 'rgba(168, 85, 247, 0.2)', width: '50px', height: '50px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <Copy color="#a855f7" size={24} />
+                    </div>
                     <div>
-                        <strong style={{ color: '#c084fc' }}>Hacer una copia para cada alumno:</strong>
-                        <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', margin: 0 }}>La joya de la corona. Crea un archivo individual para cada estudiante automáticamente.</p>
+                        <h4 style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>✨ Hacer una copia para cada alumno</h4>
+                        <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem' }}>La joya de la corona. Classroom genera automáticamente una copia individual del archivo para cada estudiante, le pone su nombre y lo guarda en su carpeta. Es el equivalente digital a repartir una hoja de trabajo impresa a cada pupitre.</p>
                     </div>
                 </div>
-
             </div>
 
-            <div style={{ marginTop: '3rem' }}>
-                <h3>Google Forms</h3>
-                <p>Configúralo como "Cuestionario" y se calificará solo. Ahorra horas de corrección manual.</p>
+            {/* GOOGLE FORMS DESARROLLADO */}
+            <div className="glass" style={{ padding: '2rem', borderRadius: '16px', display: 'flex', gap: '2rem', alignItems: 'center', flexWrap: 'wrap' }}>
+                <div style={{ flex: 1 }}>
+                    <h3 style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                        <CheckSquare color="#a855f7" /> Google Forms: Tu Asistente de Evaluación
+                    </h3>
+                    <p style={{ marginBottom: '1rem' }}>
+                        Calificar exámenes de opción múltiple a mano es cosa del pasado. Con la función <strong>"Tarea con cuestionario"</strong>, Classroom integra Google Forms directamente.
+                    </p>
+                    <p style={{ marginBottom: '1rem' }}>
+                        Puedes diseñar exámenes donde defines de antemano la respuesta correcta. Al terminar, el sistema califica automáticamente al alumno y tú recibes todas las notas concentradas en una sola tabla.
+                    </p>
+                    <p style={{ fontWeight: 'bold', color: '#c084fc' }}>
+                        Esto te libera tiempo valioso para dedicarlo a dar retroalimentación cualitativa en lugar de sumar puntos.
+                    </p>
+                </div>
             </div>
         </div>
     );
