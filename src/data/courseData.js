@@ -3,7 +3,7 @@
 export const courseData = [
     {
         id: 1,
-        title: "Fundamentos de la Innovación", 
+        title: "Fundamentos de la Innovación",
         description: "Los cimientos de tu aula digital.",
         submodules: [
             { id: 1, title: "Los Cimientos de tu Aula", type: "text" },
@@ -15,11 +15,16 @@ export const courseData = [
     },
     {
         id: 2,
-        title: "Herramientas Digitales Ágiles",
-        description: "Domina Trello, Notion y otras herramientas para tu gestión.",
+        title: "Asistentes de Inteligencia Artificial",
+        description: "Aprende a usar la IA como tu copiloto educativo.",
         submodules: [
-            { id: 1, title: "Introducción a Trello y Notion", type: "video" },
-            { id: 2, title: "Gestión del tiempo", type: "text" }
+            { id: 1, title: "Introducción a tu Copiloto Digital", type: "text" },
+            { id: 2, title: "Tu Asistente Metodológico", type: "text" },
+            { id: 3, title: "Tu Evaluador de Tareas", type: "text" },
+            { id: 4, title: "IA Interactiva", type: "text" },
+            { id: 5, title: "Evaluación de Conocimientos", type: "quiz" },
+            { id: 6, title: "Simulador de IA", type: "dynamic" },
+            { id: 7, title: "Siguientes Pasos", type: "text" }
         ]
     },
     {

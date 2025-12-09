@@ -3,12 +3,21 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { courseData } from '../data/courseData';
 import { PlayCircle, FileText, ArrowLeft, ArrowRight, CheckCircle, ChevronLeft, ChevronRight, Map, Menu } from 'lucide-react';
 
-// Importar componentes del Módulo 1
+// --- IMPORTAR COMPONENTES DEL MÓDULO 1 ---
 import S1_Cimientos from '../components/Module1/S1_Cimientos';
 import S2_ConstruyendoAula from '../components/Module1/S2_ConstruyendoAula';
 import S3_Ecosistema from '../components/Module1/S3_Ecosistema';
 import S4_Evaluacion from '../components/Module1/S4_Evaluacion';
 import S5_SiguientesPasos from '../components/Module1/S5_SiguientesPasos';
+
+// --- IMPORTAR COMPONENTES DEL MÓDULO 2 (NUEVOS) ---
+import S1_IntroduccionIA from '../components/Module2/S1_IntroduccionIA';
+import S2_AsistenteMetodologico from '../components/Module2/S2_AsistenteMetodologico';
+import S3_EvaluadorTareas from '../components/Module2/S3_EvaluadorTareas';
+import S4_IAInteractiva from '../components/Module2/S4_IAInteractiva';
+import S5_EvaluacionM2 from '../components/Module2/S5_EvaluacionM2';
+import S6_SimuladorIA from '../components/Module2/S6_SimuladorIA';
+import S7_SiguientesPasosM2 from '../components/Module2/S7_SiguientesPasosM2';
 
 const ModuleView = () => {
     const { id } = useParams();
@@ -32,9 +41,28 @@ const ModuleView = () => {
 
     if (!currentModule) return <div style={{ textAlign: 'center', padding: '5rem' }}>Módulo no encontrado</div>;
 
+    // --- AQUÍ ESTÁ moduleContent ---
+    // Es el mapa que conecta el ID del módulo con sus componentes visuales
     const moduleContent = {
-        1: [<S1_Cimientos />, <S2_ConstruyendoAula />, <S3_Ecosistema />, <S4_Evaluacion />, <S5_SiguientesPasos />],
-        2: [], 3: [], 4: [], 5: []
+        1: [
+            <S1_Cimientos />,
+            <S2_ConstruyendoAula />,
+            <S3_Ecosistema />,
+            <S4_Evaluacion />,
+            <S5_SiguientesPasos />
+        ],
+        2: [
+            <S1_IntroduccionIA />,
+            <S2_AsistenteMetodologico />,
+            <S3_EvaluadorTareas />,
+            <S4_IAInteractiva />,
+            <S5_EvaluacionM2 />,
+            <S6_SimuladorIA />,
+            <S7_SiguientesPasosM2 />
+        ],
+        3: [], // Pendiente
+        4: [], // Pendiente
+        5: []  // Pendiente
     };
 
     const renderContent = () => {
@@ -70,7 +98,7 @@ const ModuleView = () => {
             {/* Contenedor Flex Principal */}
             <div style={{
                 display: 'flex',
-                gap: isSidebarOpen ? '5rem' : '2rem', // CORRECCIÓN: Mucho más espacio cuando está abierto
+                gap: isSidebarOpen ? '5rem' : '2rem',
                 alignItems: 'flex-start',
                 transition: 'gap 0.3s ease'
             }}>
@@ -78,10 +106,10 @@ const ModuleView = () => {
                 {/* --- SIDEBAR (Sticky Wrapper) --- */}
                 <div
                     style={{
-                        width: isSidebarOpen ? '300px' : '60px', // Ancho dinámico
+                        width: isSidebarOpen ? '300px' : '60px',
                         flexShrink: 0,
-                        position: 'sticky', // CORRECCIÓN: Sticky aplicado aquí
-                        top: '100px',       // Distancia del techo
+                        position: 'sticky',
+                        top: '100px',
                         height: 'fit-content',
                         maxHeight: 'calc(100vh - 120px)',
                         transition: 'width 0.3s ease',
@@ -119,7 +147,7 @@ const ModuleView = () => {
                                 </span>
                             )}
 
-                            {/* BOTÓN COLAPSAR (Limpio y grande) */}
+                            {/* BOTÓN COLAPSAR */}
                             <button
                                 onClick={() => setIsSidebarOpen(!isSidebarOpen)}
                                 style={{
@@ -139,7 +167,7 @@ const ModuleView = () => {
                             </button>
                         </div>
 
-                        {/* Contenido del Menú (Se oculta si está cerrado) */}
+                        {/* Contenido del Menú */}
                         {isSidebarOpen && (
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', animation: 'fadeIn 0.3s' }}>
 
@@ -175,7 +203,7 @@ const ModuleView = () => {
                                                 boxShadow: activeSubmodule === index ? '0 4px 12px rgba(0,0,0,0.2)' : 'none'
                                             }}
                                         >
-                                            {index === 3 ? <CheckCircle size={18} /> : (sub.type === 'video' ? <PlayCircle size={18} /> : <FileText size={18} />)}
+                                            {index === 5 ? <CheckCircle size={18} /> : (sub.type === 'video' ? <PlayCircle size={18} /> : <FileText size={18} />)}
                                             <span style={{ fontWeight: activeSubmodule === index ? 600 : 400 }}>{sub.title}</span>
                                         </button>
                                     ))}
