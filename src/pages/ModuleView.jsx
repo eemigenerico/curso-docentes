@@ -3,14 +3,13 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { courseData } from '../data/courseData';
 import { PlayCircle, FileText, ArrowLeft, ArrowRight, CheckCircle, ChevronLeft, ChevronRight, Map, Menu } from 'lucide-react';
 
-// --- IMPORTAR COMPONENTES DEL MÓDULO 1 ---
+// --- COMPONENTES MÓDULO 1 ---
 import S1_Cimientos from '../components/Module1/S1_Cimientos';
 import S2_ConstruyendoAula from '../components/Module1/S2_ConstruyendoAula';
 import S3_Ecosistema from '../components/Module1/S3_Ecosistema';
 import S4_Evaluacion from '../components/Module1/S4_Evaluacion';
 import S5_SiguientesPasos from '../components/Module1/S5_SiguientesPasos';
-
-// --- IMPORTAR COMPONENTES DEL MÓDULO 2 (NUEVOS) ---
+// --- COMPONENTES MÓDULO 2 ---
 import S1_IntroduccionIA from '../components/Module2/S1_IntroduccionIA';
 import S2_AsistenteMetodologico from '../components/Module2/S2_AsistenteMetodologico';
 import S3_EvaluadorTareas from '../components/Module2/S3_EvaluadorTareas';
@@ -18,6 +17,13 @@ import S4_IAInteractiva from '../components/Module2/S4_IAInteractiva';
 import S5_EvaluacionM2 from '../components/Module2/S5_EvaluacionM2';
 import S6_SimuladorIA from '../components/Module2/S6_SimuladorIA';
 import S7_SiguientesPasosM2 from '../components/Module2/S7_SiguientesPasosM2';
+// --- COMPONENTES MÓDULO 3 ---
+import S1_IntroDiseno from '../components/Module3/S1_IntroDiseno';
+import S2_IAGenerativaDiseno from '../components/Module3/S2_IAGenerativaDiseno';
+import S3_Gamma from '../components/Module3/S3_Gamma';
+import S4_TutorialGamma from '../components/Module3/S4_TutorialGamma';
+import S5_EvaluacionM3 from '../components/Module3/S5_EvaluacionM3';
+import S6_SiguientesPasosM3 from '../components/Module3/S6_SiguientesPasosM3';
 
 const ModuleView = () => {
     const { id } = useParams();
@@ -60,7 +66,14 @@ const ModuleView = () => {
             <S6_SimuladorIA />,
             <S7_SiguientesPasosM2 />
         ],
-        3: [], // Pendiente
+        3: [
+            <S1_IntroDiseno />,
+            <S2_IAGenerativaDiseno />,
+            <S3_Gamma />,
+            <S4_TutorialGamma />,
+            <S5_EvaluacionM3 />,
+            <S6_SiguientesPasosM3 />
+        ], 
         4: [], // Pendiente
         5: []  // Pendiente
     };

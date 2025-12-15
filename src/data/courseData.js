@@ -29,11 +29,15 @@ export const courseData = [
     },
     {
         id: 3,
-        title: "Inteligencia Artificial en el Aula",
-        description: "Aprende a usar la IA como tu copiloto educativo.",
+        title: "Creación de Contenido",
+        description: "Deja de ser un consumidor y conviértete en un diseñador de experiencias con IA.",
         submodules: [
-            { id: 1, title: "Prompt Engineering básico", type: "text" },
-            { id: 2, title: "Creando recursos con IA", type: "video" }
+            { id: 1, title: "Introducción al Diseño de Alto Impacto", type: "text" },
+            { id: 2, title: "IA Generativa para el Diseño", type: "text" },
+            { id: 3, title: "Dominando Presentaciones con Gamma", type: "text" },
+            { id: 4, title: "Manos a la Obra: Tu Primera Presentación", type: "video" },
+            { id: 5, title: "Evaluación de Conocimientos", type: "quiz" },
+            { id: 6, title: "Siguientes Pasos", type: "text" }
         ]
     },
     {
