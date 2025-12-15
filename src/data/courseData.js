@@ -42,10 +42,15 @@ export const courseData = [
     },
     {
         id: 4,
-        title: "Evaluación 3.0",
-        description: "Nuevas formas de evaluar más allá del examen tradicional.",
+        title: "Gamificación",
+        description: "Aprende a convertir tu clase en una experiencia lúdica y motivadora.",
         submodules: [
-            { id: 1, title: "Rubricas automatizadas", type: "text" }
+            { id: 1, title: "Introducción al Aprendizaje Lúdico", type: "text" },
+            { id: 2, title: "Dominando la Interactividad con Genially", type: "video" },
+            { id: 3, title: "Gestión de Clase como Videojuego", type: "video" },
+            { id: 4, title: "Evaluaciones Lúdicas con Kahoot", type: "text" },
+            { id: 5, title: "Evaluación de Conocimientos", type: "quiz" },
+            { id: 6, title: "Siguientes Pasos", type: "text" }
         ]
     },
     {

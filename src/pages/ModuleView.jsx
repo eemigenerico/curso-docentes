@@ -24,6 +24,13 @@ import S3_Gamma from '../components/Module3/S3_Gamma';
 import S4_TutorialGamma from '../components/Module3/S4_TutorialGamma';
 import S5_EvaluacionM3 from '../components/Module3/S5_EvaluacionM3';
 import S6_SiguientesPasosM3 from '../components/Module3/S6_SiguientesPasosM3';
+// --- COMPONENTES MÓDULO 4 ---
+import S1_IntroGamificacion from '../components/Module4/S1_IntroGamificacion';
+import S2_Genially from '../components/Module4/S2_Genially';
+import S3_MyClassGame from '../components/Module4/S3_MyClassGame';
+import S4_Kahoot from '../components/Module4/S4_Kahoot';
+import S5_EvaluacionM4 from '../components/Module4/S5_EvaluacionM4';
+import S6_SiguientesPasosM4 from '../components/Module4/S6_SiguientesPasosM4';
 
 const ModuleView = () => {
     const { id } = useParams();
@@ -73,8 +80,15 @@ const ModuleView = () => {
             <S4_TutorialGamma />,
             <S5_EvaluacionM3 />,
             <S6_SiguientesPasosM3 />
-        ], 
-        4: [], // Pendiente
+        ],
+        4: [
+            <S1_IntroGamificacion />,
+            <S2_Genially />,
+            <S3_MyClassGame />,
+            <S4_Kahoot />,
+            <S5_EvaluacionM4 />,
+            <S6_SiguientesPasosM4 />
+        ],
         5: []  // Pendiente
     };
 
