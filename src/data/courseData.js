@@ -56,9 +56,15 @@ export const courseData = [
     {
         id: 5,
         title: "Proyecto Final",
-        description: "Aplica todo lo aprendido en un proyecto real.",
+        description: "Integra todo lo aprendido en un Ecosistema de Aprendizaje profesional.",
         submodules: [
-            { id: 1, title: "Instrucciones del entregable", type: "text" }
+            { id: 1, title: "La Base: Google Classroom", type: "text" },
+            { id: 2, title: "El Cerebro: Inteligencia Artificial", type: "text" },
+            { id: 3, title: "La Piel: Diseño Visual", type: "text" },
+            { id: 4, title: "El Corazón: Gamificación", type: "text" },
+            { id: 5, title: "La Estrategia de Integración", type: "text" },
+            { id: 6, title: "Examen Final del Curso", type: "quiz" },
+            { id: 7, title: "Graduación y Cierre", type: "text" }
         ]
     }
 ];

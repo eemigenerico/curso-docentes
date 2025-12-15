@@ -31,6 +31,14 @@ import S3_MyClassGame from '../components/Module4/S3_MyClassGame';
 import S4_Kahoot from '../components/Module4/S4_Kahoot';
 import S5_EvaluacionM4 from '../components/Module4/S5_EvaluacionM4';
 import S6_SiguientesPasosM4 from '../components/Module4/S6_SiguientesPasosM4';
+// --- COMPONENTES MÓDULO 5 ---
+import S1_BaseClassroom from '../components/Module5/S1_BaseClassroom';
+import S2_CerebroIA from '../components/Module5/S2_CerebroIA';
+import S3_PielDiseno from '../components/Module5/S3_PielDiseno';
+import S4_CorazonGamificacion from '../components/Module5/S4_CorazonGamificacion';
+import S5_EstrategiaIntegracion from '../components/Module5/S5_EstrategiaIntegracion';
+import S6_ExamenFinal from '../components/Module5/S6_ExamenFinal';
+import S7_Cierre from '../components/Module5/S7_Cierre';
 
 const ModuleView = () => {
     const { id } = useParams();
@@ -89,7 +97,15 @@ const ModuleView = () => {
             <S5_EvaluacionM4 />,
             <S6_SiguientesPasosM4 />
         ],
-        5: []  // Pendiente
+        5: [
+            <S1_BaseClassroom />,
+            <S2_CerebroIA />,
+            <S3_PielDiseno />,
+            <S4_CorazonGamificacion />,
+            <S5_EstrategiaIntegracion />,
+            <S6_ExamenFinal />,
+            <S7_Cierre />
+        ]
     };
 
     const renderContent = () => {
