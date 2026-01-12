@@ -1,5 +1,5 @@
 import React from 'react';
-import { Play, MousePointer2, Map, Zap, Image } from 'lucide-react';
+import { MousePointer2, Map, Zap, Image } from 'lucide-react';
 
 const S2_Genially = () => {
     return (
@@ -12,12 +12,25 @@ const S2_Genially = () => {
                 Genially es la herramienta líder para crear contenidos donde el alumno no es solo un espectador. A diferencia de PowerPoint, aquí todo puede ser "cliqueable". Es tu <strong>Navaja Suiza de Interactividad</strong>.
             </p>
 
-            {/* VIDEO PLACEHOLDER */}
-            <div style={{ width: '100%', aspectRatio: '16/9', backgroundColor: '#000', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '3rem', border: '1px solid var(--glass-border)' }}>
-                <div style={{ textAlign: 'center', color: 'white' }}>
-                    <Play size={64} fill="white" style={{ opacity: 0.8 }} />
-                    <p style={{ marginTop: '1rem' }}>Video Tutorial: Creando un Escape Room</p>
-                </div>
+            {/* VIDEO - ACTUALIZADO CON YOUTUBE */}
+            <div style={{ 
+                width: '100%', 
+                aspectRatio: '16/9', 
+                borderRadius: '16px', 
+                overflow: 'hidden', 
+                marginBottom: '3rem', 
+                border: '1px solid var(--glass-border)',
+                boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)'
+            }}>
+                <iframe 
+                    width="100%" 
+                    height="100%" 
+                    src="https://www.youtube.com/embed/CuQGJQYyl4s" 
+                    title="Tutorial Genially: Creando contenido interactivo" 
+                    frameBorder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowFullScreen
+                ></iframe>
             </div>
 
             <h3 style={{ marginBottom: '2rem' }}>Aplicaciones en el Aula – Ideas Clave</h3>

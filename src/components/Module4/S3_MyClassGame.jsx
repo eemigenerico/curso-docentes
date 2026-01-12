@@ -1,5 +1,5 @@
 import React from 'react';
-import { Play, Shield, Star, RefreshCcw, User } from 'lucide-react';
+import { Shield, Star, RefreshCcw } from 'lucide-react';
 
 const S3_MyClassGame = () => {
     return (
@@ -12,20 +12,41 @@ const S3_MyClassGame = () => {
                 Si Genially es para el contenido, <strong>MyClassGame</strong> es para la gestión de la conducta y el progreso. Esta herramienta transforma tu clase en un juego de rol (RPG). Imagina que tus alumnos no son estudiantes, sino "Exploradores" o "Magos".
             </p>
 
-            {/* VIDEO PLACEHOLDER */}
-            <div style={{ width: '100%', aspectRatio: '16/9', backgroundColor: '#000', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '3rem', border: '1px solid var(--glass-border)' }}>
-                <div style={{ textAlign: 'center', color: 'white' }}>
-                    <Play size={64} fill="white" style={{ opacity: 0.8 }} />
-                    <p style={{ marginTop: '1rem' }}>Video: Configurando tu Clase RPG</p>
-                </div>
+            {/* VIDEO - ACTUALIZADO CON YOUTUBE */}
+            <div style={{
+                width: '100%',
+                aspectRatio: '16/9',
+                borderRadius: '16px',
+                overflow: 'hidden',
+                marginBottom: '3rem',
+                border: '1px solid var(--glass-border)',
+                boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)'
+            }}>
+                <iframe
+                    width="100%"
+                    height="100%"
+                    src="https://www.youtube.com/embed/2CKlQ_C6DTo"
+                    title="Tutorial MyClassGame: Configurando tu Clase RPG"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                ></iframe>
             </div>
 
             <h3 style={{ marginBottom: '2rem' }}>Conceptos para Implementar</h3>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem' }}>
 
-                {/* HP - Vida */}
-                <div className="glass" style={{ padding: '1.5rem', borderRadius: '16px', background: 'rgba(239, 68, 68, 0.05)', border: '1px solid #ef4444' }}>
+                {/* HP - Vida (Corregido: Estilos en múltiples líneas) */}
+                <div
+                    className="glass"
+                    style={{
+                        padding: '1.5rem',
+                        borderRadius: '16px',
+                        background: 'rgba(239, 68, 68, 0.05)',
+                        border: '1px solid #ef4444'
+                    }}
+                >
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
                         <h4 style={{ color: '#f87171', margin: 0 }}>HP (Puntos de Vida)</h4>
                         <Shield color="#ef4444" />
@@ -36,8 +57,16 @@ const S3_MyClassGame = () => {
                     <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>Se pierden por comportamientos negativos (llegar tarde, interrumpir).</p>
                 </div>
 
-                {/* XP - Experiencia */}
-                <div className="glass" style={{ padding: '1.5rem', borderRadius: '16px', background: 'rgba(59, 130, 246, 0.05)', border: '1px solid #3b82f6' }}>
+                {/* XP - Experiencia (Corregido: Estilos en múltiples líneas) */}
+                <div
+                    className="glass"
+                    style={{
+                        padding: '1.5rem',
+                        borderRadius: '16px',
+                        background: 'rgba(59, 130, 246, 0.05)',
+                        border: '1px solid #3b82f6'
+                    }}
+                >
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
                         <h4 style={{ color: '#60a5fa', margin: 0 }}>XP (Experiencia)</h4>
                         <Star color="#3b82f6" />
@@ -48,8 +77,16 @@ const S3_MyClassGame = () => {
                     <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>Se ganan por comportamientos positivos y logros académicos. Sirven para subir de nivel.</p>
                 </div>
 
-                {/* Eventos */}
-                <div className="glass" style={{ padding: '1.5rem', borderRadius: '16px', background: 'rgba(168, 85, 247, 0.05)', border: '1px solid #a855f7' }}>
+                {/* Eventos (Corregido: Estilos en múltiples líneas) */}
+                <div
+                    className="glass"
+                    style={{
+                        padding: '1.5rem',
+                        borderRadius: '16px',
+                        background: 'rgba(168, 85, 247, 0.05)',
+                        border: '1px solid #a855f7'
+                    }}
+                >
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
                         <h4 style={{ color: '#c084fc', margin: 0 }}>Eventos Aleatorios</h4>
                         <RefreshCcw color="#a855f7" />

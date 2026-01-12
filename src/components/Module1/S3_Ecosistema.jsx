@@ -1,5 +1,5 @@
 import React from 'react';
-import { Play, Eye, Edit3, Copy, CheckSquare } from 'lucide-react';
+import { Eye, Edit3, Copy, CheckSquare } from 'lucide-react';
 
 const S3_Ecosistema = () => {
     return (
@@ -14,11 +14,25 @@ const S3_Ecosistema = () => {
                 Prepárate para descubrir tu nueva "fotocopiadora digital".
             </p>
 
-            {/* VÍDEO */}
-            <div style={{ width: '100%', aspectRatio: '16/9', backgroundColor: '#000', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '3rem', border: '1px solid var(--glass-border)' }}>
-                <div style={{ textAlign: 'center', color: 'white' }}>
-                    <Play size={64} fill="white" style={{ opacity: 0.8 }} />
-                </div>
+            {/* VÍDEO - ACTUALIZADO CON YOUTUBE */}
+            <div style={{
+                width: '100%',
+                aspectRatio: '16/9',
+                borderRadius: '16px',
+                overflow: 'hidden', // Importante para que el video respete los bordes redondeados
+                marginBottom: '3rem',
+                border: '1px solid var(--glass-border)',
+                boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)'
+            }}>
+                <iframe
+                    width="100%"
+                    height="100%"
+                    src="https://www.youtube.com/embed/gNn5yVc002M"
+                    title="Integración del Ecosistema de Google"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                ></iframe>
             </div>
 
             <h3 style={{ marginBottom: '1rem' }}>Google Drive: Tu Archivero Inteligente y Automático</h3>

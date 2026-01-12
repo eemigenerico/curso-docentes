@@ -1,5 +1,5 @@
 import React from 'react';
-import { Play, AlertTriangle } from 'lucide-react';
+import { AlertTriangle } from 'lucide-react';
 
 const S2_ConstruyendoAula = () => {
     return (
@@ -14,11 +14,25 @@ const S2_ConstruyendoAula = () => {
                 Aquí aprenderás a dar los primeros pasos con el pie derecho.
             </p>
 
-            {/* ZONA DE VÍDEO */}
-            <div style={{ width: '100%', aspectRatio: '16/9', backgroundColor: '#000', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '3rem', border: '1px solid var(--glass-border)' }}>
-                <div style={{ textAlign: 'center', color: 'white' }}>
-                    <Play size={64} fill="white" style={{ opacity: 0.8 }} />
-                </div>
+            {/* ZONA DE VÍDEO - ACTUALIZADA CON YOUTUBE */}
+            <div style={{
+                width: '100%',
+                aspectRatio: '16/9',
+                borderRadius: '16px',
+                overflow: 'hidden', // Importante para que el video respete los bordes redondeados
+                marginBottom: '3rem',
+                border: '1px solid var(--glass-border)',
+                boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)'
+            }}>
+                <iframe
+                    width="100%"
+                    height="100%"
+                    src="https://www.youtube.com/embed/F8icu_Wx6P0"
+                    title="Construyendo tu Primer Aula Digital"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                ></iframe>
             </div>
 
             <h3 style={{ marginBottom: '1rem' }}>Primeros Pasos</h3>

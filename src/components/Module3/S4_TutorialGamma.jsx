@@ -1,5 +1,5 @@
 import React from 'react';
-import { Play, PenTool, LayoutTemplate, Palette, Share2 } from 'lucide-react';
+import { PenTool, LayoutTemplate, Palette, Share2 } from 'lucide-react';
 
 const S4_TutorialGamma = () => {
     return (
@@ -12,12 +12,25 @@ const S4_TutorialGamma = () => {
                 Es momento de pasar de la teoría a la acción. Verás cómo transformar una simple línea de texto en una presentación web completa en cuestión de minutos utilizando <strong>Gamma</strong>.
             </p>
 
-            {/* VÍDEO PLACEHOLDER */}
-            <div style={{ width: '100%', aspectRatio: '16/9', backgroundColor: '#000', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '3rem', border: '1px solid var(--glass-border)' }}>
-                <div style={{ textAlign: 'center', color: 'white' }}>
-                    <Play size={64} fill="white" style={{ opacity: 0.8 }} />
-                    <p style={{ marginTop: '1rem' }}>Video Tutorial: Creando tu primera presentación</p>
-                </div>
+            {/* VÍDEO - ACTUALIZADO CON YOUTUBE */}
+            <div style={{
+                width: '100%',
+                aspectRatio: '16/9',
+                borderRadius: '16px',
+                overflow: 'hidden',
+                marginBottom: '3rem',
+                border: '1px solid var(--glass-border)',
+                boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)'
+            }}>
+                <iframe
+                    width="100%"
+                    height="100%"
+                    src="https://www.youtube.com/embed/WHW4VK_leqI"
+                    title="Tutorial Gamma: Creando tu primera presentación"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                ></iframe>
             </div>
 
             <h3 style={{ marginBottom: '1.5rem' }}>El Proceso de 3 Pasos</h3>
