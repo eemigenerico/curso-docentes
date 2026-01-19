@@ -27,7 +27,7 @@ const S2_ConstruyendoAula = () => {
                 <iframe
                     width="100%"
                     height="100%"
-                    src="https://youtu.be/LR-2expIUsA"
+                    src="https://youtu.be/LR-2expIUsA?si=Vk_oIDcweWVgEEQ2"
                     title="Construyendo tu Primer Aula Digital"
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

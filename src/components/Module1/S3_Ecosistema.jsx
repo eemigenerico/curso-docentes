@@ -27,7 +27,7 @@ const S3_Ecosistema = () => {
                 <iframe
                     width="100%"
                     height="100%"
-                    src="https://youtu.be/uwnWodhSNfY"
+                    src="https://youtu.be/uwnWodhSNfY?si=l01wv664a_Neu2ug"
                     title="Integración del Ecosistema de Google"
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
