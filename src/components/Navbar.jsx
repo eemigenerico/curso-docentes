@@ -4,7 +4,7 @@ import { Sun, Moon } from 'lucide-react';
 
 const Navbar = ({ theme, toggleTheme }) => {
   return (
-    <nav className="glass" style={{
+    <nav className="glass navbar-shell" style={{
       position: 'sticky',
       top: 0,
       zIndex: 100,
@@ -13,33 +13,28 @@ const Navbar = ({ theme, toggleTheme }) => {
       justifyContent: 'space-between',
       alignItems: 'center',
       borderRadius: '0 0 16px 16px',
-      flexWrap: 'wrap'
+      flexWrap: 'wrap',
+      gap: '0.75rem'
     }}>
 
-      {/* 1. LOGO CON ENLACE A INICIO */}
-      {/* Quitamos el textDecoration para que no salga subrayado azul */}
       <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}>
-          <div style={{ fontSize: '1.5rem', fontWeight: 'bold', whiteSpace: 'nowrap' }}>
+          <div className="brand-text" style={{ fontSize: 'clamp(1.1rem, 2vw, 1.5rem)', fontWeight: 'bold', whiteSpace: 'nowrap' }}>
             🎓 Docentes <span className="text-gradient">Innovadores</span>
           </div>
         </div>
       </Link>
 
-      {/* 2. MENÚ Y CONTROLES */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-
-        <div className="nav-links" style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
+      <div className="navbar-menu" style={{ display: 'flex', alignItems: 'center', gap: '20px', flexWrap: 'wrap' }}>
+        <div className="nav-links" style={{ display: 'flex', gap: '20px', alignItems: 'center', flexWrap: 'wrap' }}>
           <Link to="/" style={{ color: 'var(--text-main)', textDecoration: 'none', fontWeight: 500 }}>
             Inicio
           </Link>
-          {/* Apuntamos al Módulo 1 como ejemplo de entrada al curso */}
-          <Link to="/modulos/1" style={{ color: 'var(--text-main)', textDecoration: 'none', fontWeight: 500 }}>
+          <Link to="/modulos" style={{ color: 'var(--text-main)', textDecoration: 'none', fontWeight: 500 }}>
             Módulos
           </Link>
         </div>
 
-        {/* 3. BOTÓN DE TEMA (Usa la función toggleTheme que viene de App) */}
         <button
           onClick={toggleTheme}
           style={{
@@ -52,22 +47,14 @@ const Navbar = ({ theme, toggleTheme }) => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            transition: 'background 0.3s'
+            transition: 'background 0.3s',
+            flexShrink: 0
           }}
           title={theme === 'dark' ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
         >
           {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
         </button>
-
       </div>
-
-      {/* Estilos para móvil */}
-      <style>{`
-        @media (max-width: 600px) {
-          nav { padding: 1rem !important; }
-          .nav-links { gap: 10px !important; font-size: 0.9rem; }
-        }
-      `}</style>
     </nav>
   );
 };

@@ -138,16 +138,14 @@ const ModuleView = () => {
     return (
         <div style={{ maxWidth: '1400px', margin: '0 auto', paddingBottom: '4rem', paddingTop: '2rem' }}>
 
-            {/* Contenedor Flex Principal */}
-            <div style={{
-                display: 'flex',
+            <div className="module-layout" style={{
                 gap: isSidebarOpen ? '5rem' : '2rem',
                 alignItems: 'flex-start',
                 transition: 'gap 0.3s ease'
             }}>
 
-                {/* --- SIDEBAR (Sticky Wrapper) --- */}
                 <div
+                    className="module-sidebar"
                     style={{
                         width: isSidebarOpen ? '300px' : '60px',
                         flexShrink: 0,
@@ -256,14 +254,12 @@ const ModuleView = () => {
                     </aside>
                 </div>
 
-                {/* --- ÁREA DE CONTENIDO --- */}
-                <section style={{ flex: 1, minWidth: 0 }}>
-                    <div className="glass" style={{ padding: '3rem', borderRadius: '16px', minHeight: '600px', fontSize: '1.1rem', lineHeight: '1.8' }}>
+                <section className="module-content">
+                    <div className="glass module-panel" style={{ borderRadius: '16px' }}>
                         {renderContent()}
                     </div>
 
-                    {/* Navegación Inferior */}
-                    <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '3rem' }}>
+                    <div className="module-navigation" style={{ display: 'flex', justifyContent: 'space-between', marginTop: '3rem', gap: '1rem' }}>
                         <button
                             onClick={handlePrev}
                             disabled={isFirstSubmodule && moduleId === 1}

@@ -6,23 +6,15 @@ import { BookOpen, ArrowRight } from 'lucide-react';
 
 const ModulesMenu = () => {
     return (
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '2rem 2rem 6rem 2rem' }}>
+        <div className="modules-shell">
 
-            {/* Encabezado */}
             <div style={{ marginBottom: '4rem', textAlign: 'center' }}>
-                <h1 style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>Mapa de Aprendizaje</h1>
-                <p style={{ color: 'var(--text-muted)' }}>Selecciona un módulo para comenzar</p>
+                <h1 style={{ fontSize: 'clamp(2.2rem, 5vw, 3rem)', marginBottom: '0.5rem', lineHeight: 1.2 }}>Mapa de Aprendizaje</h1>
+                <p style={{ color: 'var(--text-muted)', margin: 0 }}>Selecciona un módulo para comenzar</p>
             </div>
 
-            {/* GRID RÍGIDO: Esto impide físicamente que se encimen */}
-            <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-                gap: '4rem', // Mucho espacio entre tarjetas
-                alignItems: 'stretch' // Todas las tarjetas de la misma altura
-            }}>
+            <div className="modules-grid">
                 {courseData.map((module) => (
-                    // Quitamos motion.div del contenedor padre para evitar conflictos de layout
                     <div key={module.id} style={{ display: 'flex', flexDirection: 'column' }}>
 
                         <Link
@@ -30,7 +22,7 @@ const ModulesMenu = () => {
                             style={{ textDecoration: 'none', flex: 1, display: 'flex' }}
                         >
                             <motion.div
-                                className="glass"
+                                className="glass modules-card"
                                 style={{
                                     width: '100%',
                                     padding: '2rem',
@@ -40,9 +32,9 @@ const ModulesMenu = () => {
                                     justifyContent: 'space-between',
                                     backgroundColor: 'var(--bg-card)',
                                     border: '1px solid var(--glass-border)',
-                                    minHeight: '300px' // Altura mínima forzada
+                                    minHeight: '300px'
                                 }}
-                                whileHover={{ y: -8, borderColor: '#8b5cf6' }} // Animación solo en hover
+                                whileHover={{ y: -8, borderColor: '#8b5cf6' }}
                             >
                                 <div>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1.5rem' }}>

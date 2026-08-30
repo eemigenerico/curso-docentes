@@ -18,10 +18,10 @@ function App() {
   };
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <div className="app-shell" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <Navbar theme={theme} toggleTheme={toggleTheme} />
 
-      <main style={{ flex: 1, padding: '20px' }}>
+      <main className="app-main" style={{ flex: 1, padding: '20px' }}>
         <Routes>
           <Route path="/" element={<Home />} />
           
